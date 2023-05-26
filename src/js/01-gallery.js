@@ -1,19 +1,18 @@
-import SimpleLightbox from "simplelightbox";
+import SimpleLightbox from 'simplelightbox';
 
-import "simplelightbox/dist/simple-lightbox.min.css";
+import 'simplelightbox/dist/simple-lightbox.min.css';
 // Add imports above this line
 import { galleryItems } from './gallery-items';
 // Change code below this line
 
 console.log(galleryItems);
 
-
-const galleryContainer = document.querySelector(".gallery");
+const galleryContainer = document.querySelector('.gallery');
 
 const imagesMarkup = createImagesMarkup(galleryItems);
-galleryContainer.insertAdjacentHTML("beforeend", imagesMarkup);
+galleryContainer.insertAdjacentHTML('beforeend', imagesMarkup);
 
-galleryContainer.addEventListener("click", onImagesContainerClick);
+galleryContainer.addEventListener('click', onImagesContainerClick);
 
 function createImagesMarkup(galleryItems) {
   const markup = galleryItems
@@ -30,13 +29,13 @@ function createImagesMarkup(galleryItems) {
   </a>
 </li>`;
     })
-    .join("");
+    .join('');
   return markup;
 }
 
 function onImagesContainerClick(event) {
   event.preventDefault();
-  if (event.target.nodeName !== "IMG") {
+  if (event.target.nodeName !== 'IMG') {
     return;
   }
 
@@ -45,12 +44,12 @@ function onImagesContainerClick(event) {
   const instance = basicLightbox.create(
     `<img src = "${selectedImage}" width = "600" height = "400">`,
     {
-      onShow: (instance) => {
-        window.addEventListener("keydown", onEscKeyPress);
+      onShow: instance => {
+        window.addEventListener('keydown', onEscKeyPress);
       },
 
-      onClose: (instance) => {
-        window.removeEventListener("keydown", onEscKeyPress);
+      onClose: instance => {
+        window.removeEventListener('keydown', onEscKeyPress);
       },
     }
   );
@@ -58,13 +57,13 @@ function onImagesContainerClick(event) {
   instance.show();
 
   function onEscKeyPress(e) {
-    if (e.code !== "Escape") return;
+    if (e.code !== 'Escape') return;
 
     instance.close();
   }
 }
 
-const lightbox = new SimpleLightbox('.gallery a' , {
-    captionDelay: 250,
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
   captionsData: 'alt',
 });
