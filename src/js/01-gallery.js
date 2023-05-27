@@ -7,10 +7,10 @@ import { galleryItems } from './gallery-items';
 
 console.log(galleryItems);
 
-const galleryContainer = document.querySelector(".gallery");
+const galleryContainer = document.querySelector('.gallery');
 
 const imagesMarkup = createImagesMarkup(galleryItems);
-galleryContainer.insertAdjacentHTML("beforeend", imagesMarkup);
+galleryContainer.insertAdjacentHTML('beforeend', imagesMarkup);
 
 function createImagesMarkup(galleryItems) {
   const markup = galleryItems
@@ -26,11 +26,11 @@ function createImagesMarkup(galleryItems) {
    </a>
 </li>`;
     })
-    .join("");
+    .join('');
   return markup;
 }
 
-const lightbox = new SimpleLightbox(".gallery a", {
+const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
-  captionsData: "alt",
+  captionsData: 'alt',
 });
